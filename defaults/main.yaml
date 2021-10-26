@@ -1,0 +1,6 @@
+# Selinux Sections
+selinux_state: enforcing
+selinux_policy: targeted
+
+# ZSH Section
+install_zsh: true

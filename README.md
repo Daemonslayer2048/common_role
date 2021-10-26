@@ -1,1 +1,3 @@
-# ansible-base-server-role
+## Requirements
+### ansible-galaxy
+  - community.general

@@ -1,0 +1,25 @@
+- name: Set VMs Hostname
+  ansible.builtin.hostname:
+    name: "{{ ansible_facts['fqdn'] }}"
+
+- name: Register RHEL Machine
+  include: rhel_register.yaml
+  when: ansible_distribution == 'RedHat'
+
+- name: Include Base Packages
+  include: packages.yml
+
+- name: Setup Base Firewall Rules
+  include: firewalld.yml
+
+- name: Include Base SELinux Tasks
+  include: selinux.yml
+
+- name: Install ZSH
+  include: oh-my-zsh.yaml
+  when: install_zsh is true
+
+- name: Set Timezone
+  community.general.timezone:
+    name: "{{ timezone }}"
+  when: timezone is defined

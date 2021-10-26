@@ -1,0 +1,31 @@
+- name: Install Base Packages
+  ansible.builtin.package:
+    state: present
+    name:
+      - sudo
+      - firewalld
+      - python3-devel
+      - git
+      - zsh
+      - curl
+      - wget
+      - policycoreutils-python-utils
+      - mlocate
+
+- name: Remove All Useless Packages
+  ansible.builtin.package:
+    state: absent
+    name:
+      - cockpit
+      - cockpit-bridge
+      - cockpit-dashboard
+      - cockpit-doc
+      - cockpit-machines
+      - cockpit-packagekit
+      - cockpit-pcp
+      - cockpit-podman
+      - cockpit-session-recording
+      - cockpit-storaged
+      - cockpit-system
+      - cockpit-ws
+      - cockpit-composer

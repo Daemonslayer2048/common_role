@@ -1,0 +1,5 @@
+- name: Register RHEL Machine
+  community.general.redhat_subscription:
+    state: present
+    activationkey: "{{ rhel.activationkey }}"
+    org_id: "{{ rhel.organizationid }}"

@@ -1,0 +1,21 @@
+- name: Enable Firewalld
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Remove Cockpit Service from Firewalld
+  ansible.posix.firewalld:
+    service: cockpit
+    permanent: yes
+    state: disabled
+  notify:
+    - Restart Firewalld
+
+- name: Remove dhcpv6-client Service from Firewalld
+  ansible.posix.firewalld:
+    service: dhcpv6-client
+    permanent: yes
+    state: disabled
+  notify:
+    - Restart Firewalld
