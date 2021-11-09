@@ -6,52 +6,52 @@
 
 - name: Check if oh-my-zsh is Already Installed
   ansible.builtin.stat:
-    path: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.oh-my-zsh"
+    path: "/home/{{ ansible_user_id }}/.oh-my-zsh"
   register: zsh_folder
 
 - name: Install oh-my-zsh
-  become: yes
-  become_user: "{{ ansible_facts['env']['SUDO_USER'] }}"
+  become: true
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.shell:
     cmd: 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash'
   when: not zsh_folder.stat.exists
 
 - name: Download powerlevel10k
-  become: yes
-  become_user: "{{ ansible_facts['env']['SUDO_USER'] }}"
+  become: true
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
-    dest: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    dest: "/home/{{ ansible_user_id }}/.oh-my-zsh/custom/themes/powerlevel10k"
 
 - name: Download zsh-autosuggestions
-  become: yes
-  become_user: "{{ ansible_facts['env']['SUDO_USER'] }}"
+  become: true
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: "/home/{{ ansible_user_id }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
 - name: Download zsh-highlighting
-  become: yes
-  become_user: "{{ ansible_facts['env']['SUDO_USER'] }}"
+  become: true
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    dest: "/home/{{ ansible_user_id }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 - name: Copy ZSH Config to Remote
   ansible.builtin.template:
-    owner: "{{ ansible_facts['env']['SUDO_USER'] }}"
-    group: "{{ ansible_facts['env']['SUDO_USER'] }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     src: ./templates/my_zshrc.j2
-    dest: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.zshrc"
+    dest: "/home/{{ ansible_user_id }}/.zshrc"
 
 - name: Copy p10k Config to Remote
   ansible.builtin.copy:
-    owner: "{{ ansible_facts['env']['SUDO_USER'] }}"
-    group: "{{ ansible_facts['env']['SUDO_USER'] }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     src: ./files/.p10k.zsh
-    dest: "/home/{{ ansible_facts['env']['SUDO_USER'] }}/.p10k.zsh"
+    dest: "/home/{{ ansible_user_id }}/.p10k.zsh"
 
 - name: Set SSH User Shell
   ansible.builtin.user:
-    name: "{{ ansible_facts['env']['SUDO_USER'] }}"
+    name: "{{ ansible_user_id }}"
     shell: /bin/zsh

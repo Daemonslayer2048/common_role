@@ -2,6 +2,7 @@
   ansible.builtin.package:
     state: present
     name:
+      - selinux-policy
       - sudo
       - firewalld
       - python3-devel

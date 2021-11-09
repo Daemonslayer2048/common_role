@@ -1,0 +1,24 @@
+dependency:
+  name: galaxy
+driver:
+  name: podman
+lint: ansible-lint
+platforms:
+  - name: rhel-8-init
+    image: ubi8/ubi-init
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+  - name: cent-8
+    image: centos:8
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
