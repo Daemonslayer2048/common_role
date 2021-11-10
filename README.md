@@ -7,7 +7,7 @@
 |    -     |   -  |     -    |    -    |    -    |
 | selinux_state | string | True | enforcing | permissive |
 | selinux_policy | string | True | targeted | targeted |
-| install_[zsh](https://www.zsh.org/) | bool | True | true | true |
+| install_zsh | bool | True | true | true |
 | users | dict | False | N/A |  |
 
 ### Variable Summaries:
@@ -34,4 +34,4 @@ users:
     shell: /bin/zsh
     groups: wheel
 ```
-The only required item is the users names, and groups should be a comma seperated list of groups the user will belong to. 
+The only required item is the users names, and groups should be a comma seperated list of groups the user will belong to.
