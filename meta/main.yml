@@ -1,12 +1,19 @@
 galaxy_info:
   author: Jacob Hanafin
   description: A base role that should be applied to all servers
-  role_name: ansible_common_role
+  namespace: daemonslayer2048
+  role_name: common
   license: GPL-3.0-only
   min_ansible_version: 2.9
   platforms:
     - name: CentOS
       versions:
         - 8
+        - Stream
+    - name: RedHat
+      versions:
+        - 8
   galaxy_tags:
     - common
+  dependencies:
+    - community.general

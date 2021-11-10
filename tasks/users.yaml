@@ -1,0 +1,8 @@
+- name: Create User
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    password: "{% if item.password is defined %}{{ item.password }}{% endif %}"
+    comment: "{% if item.comment is defined %}{{ item.comment }}{% endif %}"
+    shell: "{% if item.shell is defined %}{{ item.shell }}{% else %}/bin/bash{% endif %}"
+    groups: "{% if item.groups is defined %}{{ item.groups }}{% endif %}"
+  with_items: "{{ users }}"

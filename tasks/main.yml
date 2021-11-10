@@ -23,3 +23,7 @@
   community.general.timezone:
     name: "{{ timezone }}"
   when: timezone is defined
+
+- name: Create Users
+  include: users.yaml
+  when: (users is defined) and (users | length > 0)
