@@ -1,5 +1,4 @@
 # Anisble Server Common Role  
-[toc]  
 
 ## Requirements
 ### ansible-galaxy
