@@ -1,0 +1,11 @@
+# Search domains
+{% if dns.searchdomains is defined %}
+search{% for searchdomain in dns.searchdomains %} {{ searchdomain }} {% endfor %}
+{% endif %}
+
+# Nameservers
+{% if dns.nameservers is defined %}
+{% for nameserver in dns.nameservers %}
+nameserver {{ nameserver }}
+{% endfor %}
+{% endif %}

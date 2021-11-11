@@ -1,0 +1,11 @@
+- name: Build resolv.conf File
+  ansible.builtin.template:
+    src: ./templates/resolv.conf.j2
+    dest: /etc/resolv.conf
+  when: (testing is defined) and (testing is true)
+
+- name: Build hosts File
+  ansible.builtin.template:
+    src: ./templates/hosts.j2
+    dest: /etc/hosts
+  when: (testing is defined) and (testing is true)

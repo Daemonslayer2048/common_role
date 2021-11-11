@@ -1,15 +1,6 @@
 - name: Converge
-  vars:
-    users:
-      - name: user
-      - name: user2
-        comment: "A user who just NEEDS to be cool and use ZSH"
-        shell: /bin/zsh
-      - name: admin
-        password: $6$UkAmkRMIknoOijJ8$o9f7KjoDXW0/yvwVf2rzshiPe7f0uBY99Ve9tn2uyIt1/U5RyV67k37tJY72TfBxzYCgk2vXWNo439jAgMyS41
-        comment: "Admin User"
-        shell: /bin/zsh
-        groups: wheel
+  vars_files:
+    - testing_vars.yaml
   hosts: all
   tasks:
     - name: "Include Common Role"
