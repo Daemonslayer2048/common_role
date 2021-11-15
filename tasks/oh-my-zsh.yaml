@@ -9,11 +9,20 @@
     path: "/home/{{ ansible_user_id }}/.oh-my-zsh"
   register: zsh_folder
 
+- name: Download oh-my-zsh
+  become: true
+  become_user: "{{ ansible_user_id }}"
+  ansible.builtin.get_url:
+    url: 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh'
+    dest: '/tmp/install_oh_my_zsh.sh'
+    mode: '0700'
+  when: not zsh_folder.stat.exists
+
 - name: Install oh-my-zsh
   become: true
   become_user: "{{ ansible_user_id }}"
   ansible.builtin.shell:
-    cmd: 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash'
+    cmd: '/tmp/install_oh_my_zsh.sh'
   when: not zsh_folder.stat.exists
 
 - name: Download powerlevel10k
