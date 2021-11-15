@@ -6,11 +6,7 @@ galaxy_info:
   license: GPL-3.0-only
   min_ansible_version: 2.9
   platforms:
-    - name: CentOS
-      versions:
-        - 8
-        - Stream
-    - name: RedHat
+    - name: EL
       versions:
         - 8
   galaxy_tags:
