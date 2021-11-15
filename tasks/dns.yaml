@@ -2,10 +2,10 @@
   ansible.builtin.template:
     src: ./templates/resolv.conf.j2
     dest: /etc/resolv.conf
-  when: (testing is defined) and (testing is true)
+  when: (testing is not defined) or (testing is false)
 
 - name: Build hosts File
   ansible.builtin.template:
     src: ./templates/hosts.j2
     dest: /etc/hosts
-  when: (testing is defined) and (testing is true)
+  when: (testing is not defined) or (testing is false)

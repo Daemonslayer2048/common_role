@@ -1,3 +1,4 @@
+testing: True
 timezone: America/Chicago
 dns:
   searchdomains:
@@ -13,7 +14,7 @@ dns:
     - ip: 192.168.1.21
       names:
         - test1
-        - test1.local 
+        - test1.local
 users:
   - name: user
   - name: user2
