@@ -10,7 +10,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/usr/local/go/bin:$PATH
 export XDG_CONFIG_HOME=$HOME
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/{{ ansible_user_id }}/.oh-my-zsh"
+export ZSH="/home/{{ ansible_user }}/.oh-my-zsh"
 
 # Helpful customizations
 HISTFILE=~/.histfile
@@ -18,7 +18,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch notify
 unsetopt beep
-zstyle :compinstall filename '/home/{{ ansible_user_id }}/.zshrc'
+zstyle :compinstall filename '/home/{{ ansible_user }}/.zshrc'
 autoload -Uz compinit
 compinit
 unset SSH_ASKPASS

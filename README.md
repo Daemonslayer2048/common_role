@@ -2,6 +2,7 @@
 
 ## Requirements
 ### ansible-galaxy
+__Collections:__
   - community.general
 
 ## Variables
