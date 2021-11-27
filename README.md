@@ -84,7 +84,7 @@ If the hosts list is not included the following will be the default file:
 | organizationid | string | True |
 | activationkey | string | True |  
 
-The rhel dictionary will only be used if a machine is a RHEL instance, if the instance is RHEL it will be registered. So while this dicitionary is not considered required it is required if you have any RHEL machines.
+The rhel dictionary will only be used if a machine is a RHEL instance, if the instance is RHEL it will be registered. So while this dictionary is not considered required it is required if you have any RHEL machines.
 
 __Example:__
 ``` yaml
