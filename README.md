@@ -1,4 +1,4 @@
-# Anisble Server Common Role  
+# Ansible Server Common Role  
 
 ## Requirements
 ### ansible-galaxy
