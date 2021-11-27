@@ -10,7 +10,7 @@
 
 - name: Check if oh-my-zsh is Already Installed
   ansible.builtin.stat:
-    path: "/home/{{ ansible_user_id }}/.oh-my-zsh"
+    path: "/home/{{ ansible_user }}/.oh-my-zsh"
   register: zsh_folder
 
 - name: Install oh-my-zsh
