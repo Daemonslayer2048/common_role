@@ -14,6 +14,7 @@ __Collections:__
 | users | dict | False | N/A | [Example](#users) |
 | timezone | string | False | N/A | America/Chicago |
 | dns | dict | False | N/A | [Example](#dns) |
+| rhel | dict | False | N/A | [Example](#rhel) |
 
 ### Variable Summaries:
 #### selinux_state
@@ -75,4 +76,19 @@ If the hosts list is not included the following will be the default file:
 ```
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+```
+
+#### rhel
+| Variable | Type | Required |
+|    -     |   -  |     -    |
+| organizationid | string | True |
+| activationkey | string | True |  
+
+The rhel dictionary will only be used if a machine is a RHEL instance, if the instance is RHEL it will be registered. So while this dicitionary is not considered required it is required if you have any RHEL machines.
+
+__Example:__
+``` yaml
+rhel:
+  organizationid: 1654161
+  activationkey: reg_key
 ```
